@@ -1,6 +1,6 @@
 {
   "name": "norjs",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "The NorJS Runtime Environment",
   "main": "index.js",
   "directories": {
