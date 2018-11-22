@@ -1,0 +1,66 @@
+{
+  "name": "angularjs-project-template",
+  "version": "1.0.0",
+  "description": "Ready to use -- commercially available -- MIT-licensed AngularJS / NodeJS project template.",
+  "scripts": {
+    "build": "rimraf dist && webpack --bail --progress --profile",
+    "server": "webpack-dev-server --history-api-fallback --inline --progress",
+    "test": "karma start",
+    "test-watch": "karma start --auto-watch --no-single-run",
+    "start": "npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/norjs/angularjs-project-template.git"
+  },
+  "author": "jheusala",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/norjs/angularjs-project-template/issues"
+  },
+  "homepage": "https://github.com/norjs/angularjs-project-template#readme",
+  "dependencies": {
+    "angular": "^1.7.5",
+    "angular-translate": "^2.18.1",
+    "angular-ui-router": "^1.0.20",
+    "lodash": "^4.17.11",
+    "reset-css": "^4.0.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "devDependencies": {
+    "@novnc/novnc": "^1.0.0",
+    "ajv": "^6.4.0",
+    "angular-mocks": "^1.7.5",
+    "autoprefixer": "^8.4.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.1.18",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "font-awesome": "^4.7.0",
+    "font-awesome-loader": "^1.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "jasmine-core": "^3.1.0",
+    "karma": "^3.0.0",
+    "karma-coverage": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "^0.0.32",
+    "karma-webpack": "^4.0.0-rc.2",
+    "node-libs-browser": "^2.1.0",
+    "node-sass": "^4.9.3",
+    "null-loader": "^0.1.1",
+    "phantomjs-prebuilt": "^2.1.4",
+    "postcss-loader": "^2.1.5",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.25.1",
+    "webpack-dev-server": "^3.1.10"
+  }
+}

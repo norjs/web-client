@@ -1,0 +1,28 @@
+
+body > header {
+  padding: 0.5em 1em 0.5em 1em;
+  color: #ffffff;
+  background-color: #2871b6;
+}
+
+body > header a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  font-weight: bold;
+}
+
+p {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+
+body > section {
+  padding: 0.5em 1em 1em 1em;
+  background-color: #d7d7d7;
+  color: #333333;
+}

@@ -1,0 +1,80 @@
+<main>
+  <h3>Main page</h3>
+
+  <p>Hello World</p>
+
+  <nr-form
+    register="$ctrl.setForm(form)"
+    unregister="$ctrl.setForm()"
+    submit="$ctrl.onSubmit($event)"
+  >
+
+    <section>
+      <nr-checkbox ng-model="$ctrl.model.booleanValue"
+                   name="boolean"
+                   label="Boolean Input"
+      ></nr-checkbox>
+    </section>
+
+    <section>
+      <nr-text ng-model="$ctrl.model.textValue"
+               name="text"
+               label="Text Input"
+               ng-required="true"
+      ></nr-text>
+    </section>
+
+    <section>
+      <nr-textarea ng-model="$ctrl.model.textAreaValue"
+                   name="textarea"
+                   label="Text area"
+                   ng-required="true"
+      ></nr-textarea>
+    </section>
+
+    <nr-submit-button
+      label="common.submit"
+    ></nr-submit-button>
+
+  </nr-form>
+
+  <!--<nr-window><no-vnc-->
+    <!--url="ws://localhost:45903"-->
+    <!--options="{credentials:{password:'sadpanda'}}"-->
+  <!--&gt;</no-vnc></nr-window>-->
+
+  <nr-window title="Model">
+    <pre style="background-color:pink">{{$ctrl.model|json}}</pre>
+  </nr-window>
+
+  <nr-window title="Form">
+    <pre style="background-color:pink">{{$ctrl.form|json}}</pre>
+  </nr-window>
+
+  <!--<nr-compile component="nrWindow"-->
+              <!--attributes="{'title':'nrCompile test'}"-->
+              <!--content="Hello World"-->
+  <!--&gt;</nr-compile>-->
+
+  <!--<nr-grid content="[-->
+    <!--{-->
+      <!--'component': 'div',-->
+      <!--'content': 'Foo 1'-->
+    <!--}-->
+    <!--, {-->
+      <!--'component': 'div',-->
+      <!--'content': 'Foo 2'-->
+    <!--}-->
+    <!--, [-->
+      <!--{-->
+        <!--'component': 'div',-->
+        <!--'content': 'Bar 1'-->
+      <!--},-->
+      <!--{-->
+        <!--'component': 'div',-->
+        <!--'content': 'Bar 2'-->
+      <!--}-->
+    <!--]-->
+  <!--]"></nr-grid>-->
+
+</main>

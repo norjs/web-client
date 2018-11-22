@@ -1,0 +1,29 @@
+{
+  "name": "NorJS Sample App Configuration",
+  "models": {
+  },
+  "navs": {
+    "top": {
+      "collection": [
+        {
+          "id": "main",
+          "href": "main",
+          "icon": "home",
+          "label": "Home",
+          "isVisible": {
+            "hasSession": true
+          }
+        }
+      ]
+    }
+  },
+  "states": {
+    "main": {
+      "name": "main"
+    , "options": {
+        "url": "/main"
+      , "component": "mainView"
+      }
+    }
+  }
+}

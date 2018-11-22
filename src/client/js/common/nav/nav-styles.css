@@ -1,0 +1,38 @@
+
+nr-nav > nav > ul {
+  display: flex;
+  flex-direction: row;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  width: 100%;
+}
+
+nr-nav > nav > ul > li {
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+nr-nav > nav > ul > li > a {
+  display: block;
+  font: bold 12px/20px sans-serif;
+  padding: 0.5em;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+}
+
+nr-nav > nav > ul > li:hover > a {
+  background: #000000;
+}
+
+nr-nav > nav > ul > li.selected > a {
+  background: #000000;
+}

@@ -1,0 +1,78 @@
+$window-background-color: #ffffff;
+$window-border-color: #000000;
+$window-border-size: 3px;
+$window-shadow-color: rgba(0, 0, 0, 0.2);
+
+$window-header-background-color: #2871b6;
+$window-header-text-color: #ffffff;
+
+$window-moving-border-color: #009909;
+
+$window-scrollbar-color: darkgrey;
+$window-scrollbar-outline-size: 1px;
+$window-scrollbar-outline-color: slategrey;
+$window-scrollbar-shadow-color: rgba(0,0,0,0.3);
+
+nr-window {
+  display: flex;
+  flex-direction: column;
+  border: $window-border-size solid $window-border-color;
+  background: $window-background-color;
+  box-shadow: 2px 2px 2px 1px $window-shadow-color;
+  cursor: pointer;
+  align-items: stretch;
+
+  & > header {
+    background-color: $window-header-background-color;
+    color: $window-header-text-color;
+    flex: 0 1 auto;
+    border-bottom: $window-border-size solid $window-border-color;
+    padding: 0.5em;
+    align-items: stretch;
+
+    text-align: center;
+
+    & > .actions {
+      float: right;
+    }
+  }
+
+  & > section {
+    flex: 1 1 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    position: relative;
+    padding: 0;
+    overflow: auto;
+    cursor: initial;
+
+    & > * {
+      flex: 1 1 auto;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0.75em;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px $window-scrollbar-shadow-color;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $window-scrollbar-color;
+      outline: $window-scrollbar-outline-size solid $window-scrollbar-outline-color;
+    }
+
+  }
+
+  &.is-moving {
+    border: $window-border-size solid $window-moving-border-color;
+    header {
+      border-bottom: $window-border-size solid $window-moving-border-color;
+    }
+  }
+
+}

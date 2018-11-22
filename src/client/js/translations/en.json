@@ -1,0 +1,11 @@
+{
+  "common": {
+    "submit": "Submit",
+    "login": "Login",
+    "reset": "Reset",
+    "connect": "Connect",
+    "hostname": "Hostname",
+    "username": "Username",
+    "password": "Password"
+  }
+}

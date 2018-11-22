@@ -1,0 +1,34 @@
+{
+  "name": "norjs",
+  "version": "0.0.1",
+  "description": "The NorJS Runtime Environment",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/norjs/norjs.git"
+  },
+  "keywords": [
+    "angularjs",
+    "webpack",
+    "es6",
+    "karma",
+    "javascript",
+    "ecmascript",
+    "nodejs",
+    "babel",
+    "runtime",
+    "runtime-environment"
+  ],
+  "author": "Jaakko-Heikki Heusala <jheusala@iki.fi>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/norjs/norjs/issues"
+  },
+  "homepage": "https://github.com/norjs/norjs#readme"
+}
