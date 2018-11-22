@@ -8,3 +8,27 @@ will run any compatible AngularJS ES6 app as well*.
 stable release until we release it to the first commercial customer. 
 
 You may follow the progress in [the feature issue #1](https://github.com/norjs/norjs/issues/1).
+
+### Install norjs command line interface
+
+```
+npm install norjs
+```
+
+### Install NorJS Runtime Environment
+
+```
+norjs install
+```
+
+### Run NorJS RE for development
+
+```
+norjs run ./app.json
+```
+
+### Build static production files
+
+```
+norjs build ./app.json
+``` 
