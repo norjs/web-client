@@ -11,7 +11,6 @@ import './app-styles.scss';
 
 import CONFIG from "./norjsConfig.js";
 const STATES = CONFIG.states;
-const MODELS = CONFIG.models;
 const NAVS = CONFIG.navs;
 
 import TRANSLATIONS from "./translations/index";
@@ -28,7 +27,6 @@ export default angular.module(
     , viewsModule
   ])
   .constant("STATES", STATES)
-  .constant("MODELS", MODELS)
   .constant("NAVS", NAVS)
   .config($logProvider => {
     $logProvider.debugEnabled(true);

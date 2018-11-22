@@ -9,9 +9,11 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const NORJS_ROOT_DIR = __dirname;
-const NORJS_JS_DIR = PATH.join(NORJS_ROOT_DIR, './js');
+const NORJS_SOURCE_DIR = PATH.join(NORJS_ROOT_DIR, './js');
+const NORJS_PUBLIC_DIR = PATH.join(NORJS_ROOT_DIR, './public');
+const NORJS_API_URL = "http://localhost:3000";
 
-const NORJS_CONFIG_FILE = PATH.resolve(_.get(process, 'env.NORJS_CONFIG_FILE') || PATH.join(NORJS_ROOT_DIR, './app.json'));
+const NORJS_CONFIG_FILE = PATH.resolve(_.get(process, 'env.NORJS_CONFIG_FILE') || PATH.join(NORJS_SOURCE_DIR, './app.json'));
 
 /**
  * Env
@@ -42,7 +44,7 @@ module.exports = function makeWebpackConfig() {
    * Karma will set this when it's a test build
    */
   config.entry = isTest ? void 0 : {
-    app: PATH.join(NORJS_JS_DIR, './appModule.js')
+    app: PATH.join(NORJS_SOURCE_DIR, './appModule.js')
   };
 
   /**
@@ -210,7 +212,7 @@ module.exports = function makeWebpackConfig() {
     // Render index.html
     config.plugins.push(
       new HtmlWebpackPlugin({
-        template: PATH.join(NORJS_ROOT_DIR, './public/index.html'),
+        template: PATH.join(NORJS_PUBLIC_DIR, './index.html'),
         inject: 'body'
       })
     );
@@ -228,16 +230,10 @@ module.exports = function makeWebpackConfig() {
       // Only emit files when there are no errors
       new webpack.NoEmitOnErrorsPlugin(),
 
-      // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-      // Dedupe modules in the output
-      //
-      // However, no more DedupePlugin in Webpack 4.
-      //new webpack.optimize.DedupePlugin(),
-
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin
       new CopyWebpackPlugin([{
-        from: __dirname + '/src/public'
+        from: NORJS_PUBLIC_DIR
       }])
     )
   }
@@ -249,12 +245,12 @@ module.exports = function makeWebpackConfig() {
    * Reference: http://webpack.github.io/docs/webpack-dev-server.html
    */
   config.devServer = {
-    contentBase: PATH.join(NORJS_ROOT_DIR, './public'),
+    contentBase: NORJS_PUBLIC_DIR,
     stats: 'minimal',
     host: '0.0.0.0',
     proxy: {
       "/api/*": {
-        target: "http://localhost:3000"
+        target: NORJS_API_URL
       }
     }
   };

@@ -10,10 +10,3 @@
  * @type {string}
  */
 export const PREFERRED_LANGUAGE = 'en';
-
-/**
- * Tells if we have support for NoVNC enabled in this build.
- *
- * @type {boolean}
- */
-export const ENABLE_NOVNC = true;

@@ -22,7 +22,7 @@
       "name": "main"
     , "options": {
         "url": "/main"
-      , "component": "mainView"
+      , "component": "nrMainView"
       }
     }
   }
