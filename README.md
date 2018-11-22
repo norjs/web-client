@@ -1,7 +1,8 @@
 # The NorJS Runtime Environment.
 
-This is the MIT-licensed runtime environment for our commercial NorJS 
-development environment.
+This is a MIT-licensed runtime environment for apps created with our 
+not-yet-published commercial NorJS development environment, **however** *it 
+will run any compatible AngularJS ES6 app as well*.
 
 The NorJS RE is still under active development and there is no official stable 
 release until we release it to the first commercial customer. 
