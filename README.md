@@ -21,13 +21,13 @@ npm install -g norjs
 norjs install
 ```
 
-### Run NorJS RE for development
+### Run NorJS app in a development mode
 
 ```
 norjs run ./app.json
 ```
 
-### Build static production files
+### Build static files for production deployment
 
 ```
 norjs build ./app.json
