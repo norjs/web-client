@@ -4,7 +4,7 @@ describe('MainViewController', () => {
 
   beforeEach(() => {
 
-    angular.mock.module('norjs.views.main');
+    angular.mock.module('norjs.app.views.main');
 
   });
 

@@ -6,14 +6,14 @@ describe('CompileUtils', () => {
   const test = Test.create({
 
     // This is the module name which will be loaded -- the main test subject
-    moduleName: 'norjs.services.utils.compile'
+    moduleName: 'norjs.app.utils.compile'
 
   });
 
   let compileUtils;
 
   beforeEach( () => {
-    compileUtils = test.get('compileUtils');
+    compileUtils = test.get('nrCompileUtils');
   } );
 
   describe('.stringifyExpression()', () => {

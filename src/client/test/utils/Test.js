@@ -3,7 +3,7 @@ import defaultBeforeEach from "./beforeEach";
 import {componentSpyOn} from "./helpers";
 
 const TEST_COMPONENT_NAME = 'testComponent';
-const TEST_COMPONENT_MODULE_NAME = 'test.mocks.testComponent';
+const TEST_COMPONENT_MODULE_NAME = 'norjs.test.mocks.testComponent';
 const TEST_DEP1 = 'testDep1';
 const TEST_DEP1_VALUE = '12345';
 

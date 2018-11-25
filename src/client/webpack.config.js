@@ -8,12 +8,14 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const NORJS_ROOT_DIR = __dirname;
-const NORJS_SOURCE_DIR = PATH.join(NORJS_ROOT_DIR, './js');
-const NORJS_PUBLIC_DIR = PATH.join(NORJS_ROOT_DIR, './public');
+const NORJS_ROOT_DIR = PATH.resolve(__dirname);
+const NORJS_SOURCE_DIR = PATH.join(NORJS_ROOT_DIR, './app');
+const NORJS_PUBLIC_DIR = PATH.join(NORJS_SOURCE_DIR, './public');
+const NORJS_DIST_DIR = PATH.join(NORJS_ROOT_DIR, './dist');
 const NORJS_API_URL = "http://localhost:3000";
 
 const NORJS_CONFIG_FILE = PATH.resolve(_.get(process, 'env.NORJS_CONFIG_FILE') || PATH.join(NORJS_SOURCE_DIR, './app.json'));
+const NORJS_EXTERNAL_FILES = PATH.resolve(_.get(process, 'env.NORJS_EXTERNAL_FILES') || '');
 
 /**
  * Env
@@ -37,6 +39,18 @@ module.exports = function makeWebpackConfig() {
     hints:false
   };
 
+  config.context = NORJS_SOURCE_DIR;
+
+  const appEntries = [];
+
+  if (NORJS_EXTERNAL_FILES) {
+    _.forEach(_.split(NORJS_EXTERNAL_FILES, ':'), file => {
+      appEntries.push(file);
+    });
+  }
+
+  appEntries.push(PATH.join(NORJS_SOURCE_DIR, './appModule.js'));
+
   /**
    * Entry
    * Reference: http://webpack.github.io/docs/configuration.html#entry
@@ -44,7 +58,7 @@ module.exports = function makeWebpackConfig() {
    * Karma will set this when it's a test build
    */
   config.entry = isTest ? void 0 : {
-    app: PATH.join(NORJS_SOURCE_DIR, './appModule.js')
+    app: appEntries
   };
 
   /**
@@ -55,7 +69,7 @@ module.exports = function makeWebpackConfig() {
    */
   config.output = isTest ? {} : {
     // Absolute output directory
-    path: __dirname + '/dist',
+    path: NORJS_DIST_DIR,
 
     // Output path from the view of the page
     // Uses webpack-dev-server in development
@@ -68,6 +82,15 @@ module.exports = function makeWebpackConfig() {
     // Filename for non-entry points
     // Only adds hash in build mode
     chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js',
+  };
+
+  config.resolve = {
+    modules: [
+      PATH.join(NORJS_ROOT_DIR, './node_modules')
+    ],
+    alias: {
+      "norjs": PATH.join(NORJS_SOURCE_DIR, './index.js')
+    }
   };
 
   /**
