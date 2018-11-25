@@ -22,14 +22,49 @@ const VERSION = _.get(require(PACKAGE_JSON_FILE), 'version', 'n/a');
  */
 const EXIT_FOREACH = false;
 
-function exec (name, args, env) {
-	return EXEC(name, args, {
+/**
+ *
+ * @param name
+ * @param args
+ * @param env
+ * @param detached {boolean} If true, the child process will be detached.
+ * @param disconnect {boolean} If true, disconnect IPC channel to the child.
+ * @returns {Promise<{retval: number, stdout: string, stderr: string} | string>}
+ */
+function exec (name, args, env, {detached = false, disconnect = true} = {}) {
+
+	const promise = EXEC(name, args, {
 		env,
-		stdio: ['inherit', 'inherit', 'inherit']
+		stdio: ['pipe', 'inherit', 'inherit']
 	}, {
 		stdout: false,
-		stderr: false
+		stderr: false,
+		detached,
+		disconnect
 	});
+
+	let childRunning = true;
+	let childKilled = false;
+
+	const child = promise.CHILD;
+
+	child.on('exit', () => childRunning = false);
+
+	if (child.stdin) child.stdin.end();
+
+	function killChild (reason) {
+		if (childKilled || !childRunning) return;
+
+		console.error(`Received "${reason}" - Killing child #${child.pid}`);
+		child.kill();
+		childKilled = true;
+	}
+
+	process.on("exit", () => killChild("exit"));
+	process.on("SIGHUP", () => killChild("SIGHUP"));
+	process.on("SIGINT", () => killChild("SIGINT"));
+
+	return promise;
 }
 
 /**
@@ -98,9 +133,12 @@ function run (args, argv) {
 	const NORJS_CONFIG_FILE = PATH.resolve(CURRENT_DIR, _.first(args));
 	const NORJS_EXTERNAL_FILES = parseImport(argv).join(':');
 	process.chdir(CLIENT_DIR);
-	exec('npm', ['start'], {
+
+	return exec('npm', ['start'], {
 		NORJS_CONFIG_FILE
 		, NORJS_EXTERNAL_FILES
+	}, {
+		detached: true
 	}).catch(handleErrors);
 }
 
