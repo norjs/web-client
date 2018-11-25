@@ -1,5 +1,8 @@
 {
   "name": "Hello World",
+  "modules": [
+    "myapp"
+  ],
   "states": {
     "main": {
       "name": "main"

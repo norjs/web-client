@@ -3,7 +3,7 @@ import { angular, NrViewController } from "norjs";
 let mainViewComponent = {
 	template: `
 <main>
-  <h3>Main page</h3>
+  <h3>MyApp</h3>
 
   <p>Hello World</p>
 </main>
@@ -17,6 +17,8 @@ let mainViewComponent = {
 
 export default angular.module(
 	"myapp"
-	, [])
-                      .component('myMainView', mainViewComponent)
-	.name;
+	, [
+    ]
+  )
+  .component('myMainView', mainViewComponent)
+  .name;

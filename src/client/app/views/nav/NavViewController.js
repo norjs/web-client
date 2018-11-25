@@ -18,7 +18,12 @@ class NavViewController extends NrViewController {
   constructor ($injector, $element, $attrs, $scope, NAVS) {
     super("NrNavViewController", $injector, $element, $attrs, $scope);
 
-    this.nav = _.cloneDeep(NAVS.top);
+    this.nav = _.cloneDeep(NAVS && NAVS.top ? NAVS.top : { collection: [] });
+
+    if (!this.nav.collection) {
+      this.nav.collection = [];
+    }
+
     this.nav.getId = item => item.id;
     this.nav.getHref = item => item.href || item.id;
     this.nav.getIcon = item => item.icon;

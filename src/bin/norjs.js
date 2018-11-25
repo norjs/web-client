@@ -1,13 +1,13 @@
 import _ from 'lodash';
 import minimist from 'minimist';
 import EXEC from 'nor-exec';
-import path from 'path';
+import PATH from 'path';
 
-const ROOT_DIR = path.resolve(path.join(__dirname, '..'));
-const PACKAGE_JSON_FILE = path.join(ROOT_DIR, 'package.json');
-const CLIENT_DIR = path.join(ROOT_DIR, './src/client');
+const ROOT_DIR = PATH.resolve(PATH.join(__dirname, '..'));
+const PACKAGE_JSON_FILE = PATH.join(ROOT_DIR, 'package.json');
+const CLIENT_DIR = PATH.join(ROOT_DIR, './src/client');
 const CURRENT_DIR = process.cwd();
-const DIST_DIR = path.join(CLIENT_DIR, './dist');
+const DIST_DIR = PATH.join(CLIENT_DIR, './dist');
 
 const PRODUCT = 'norjs';
 const MODEL = 're';
@@ -45,6 +45,28 @@ const COMMANDS = {
 };
 
 /**
+ *
+ * @param value {Array.<*>|*} Parse the value into an array, if it exists.
+ * @returns {Array}
+ */
+function parseToArray (value) {
+	return value ? (_.isArray(value) ? value : [value]) : [];
+}
+
+/**
+ * Parse `argv.import`
+ *
+ * @param argv
+ * @returns {Array.<string>}
+ */
+function parseImport (argv) {
+	return _.map(
+		parseToArray(argv.import)
+		, path => PATH.resolve(PATH.join(CURRENT_DIR, path))
+	);
+}
+
+/**
  * Handle errors.
  *
  * @param err {Error}
@@ -70,24 +92,30 @@ function version () {
 /**
  *
  * @param args
+ * @param argv
  */
-function run (args) {
-	const NORJS_CONFIG_FILE = path.resolve(CURRENT_DIR, _.first(args));
+function run (args, argv) {
+	const NORJS_CONFIG_FILE = PATH.resolve(CURRENT_DIR, _.first(args));
+	const NORJS_EXTERNAL_FILES = parseImport(argv).join(':');
 	process.chdir(CLIENT_DIR);
 	exec('npm', ['start'], {
 		NORJS_CONFIG_FILE
+		, NORJS_EXTERNAL_FILES
 	}).catch(handleErrors);
 }
 
 /**
  *
  * @param args
+ * @param argv
  */
-function build (args) {
-	const NORJS_CONFIG_FILE = path.resolve(CURRENT_DIR, _.first(args));
+function build (args, argv) {
+	const NORJS_CONFIG_FILE = PATH.resolve(CURRENT_DIR, _.first(args));
+	const NORJS_EXTERNAL_FILES = parseImport(argv).join(':');
 	process.chdir(CLIENT_DIR);
 	exec('npm', ['run', '-s', 'build'], {
 		NORJS_CONFIG_FILE
+		, NORJS_EXTERNAL_FILES
 	}).then(() => {
 		console.log('norjs build OK');
 	}).catch(handleErrors);
@@ -121,11 +149,12 @@ function usage () {
 /**
  *
  * @param commands {Array.<string>}
+ * @param argv
  */
-function executeCommands (commands) {
+function executeCommands (commands, argv) {
 
 	if (commands.length === 0) {
-		usage();
+		usage(commands, argv);
 		return;
 	}
 
@@ -134,28 +163,28 @@ function executeCommands (commands) {
 		switch (command) {
 
 		case COMMANDS.RUN:
-			run(commands.slice(index+1));
+			run(commands.slice(index+1), argv);
 			return EXIT_FOREACH;
 
 		case COMMANDS.BUILD:
-			build(commands.slice(index+1));
+			build(commands.slice(index+1), argv);
 			return EXIT_FOREACH;
 
 		case COMMANDS.INSTALL:
-			install(commands.slice(index+1));
+			install(commands.slice(index+1), argv);
 			return EXIT_FOREACH;
 
 		case COMMANDS.VERSION:
-			version(commands.slice(index+1));
+			version(commands.slice(index+1), argv);
 			return EXIT_FOREACH;
 
 		case COMMANDS.ENV:
-			print_env(commands.slice(index+1));
+			print_env(commands.slice(index+1), argv);
 			return EXIT_FOREACH;
 
 		default:
 			console.error('Unknown command: ', command);
-			usage(commands.slice(index+1));
+			usage(commands.slice(index+1), argv);
 			return EXIT_FOREACH;
 		}
 	});
@@ -169,7 +198,7 @@ function executeCommands (commands) {
 export function main (argv) {
 	argv = minimist(argv.slice(2));
 	try {
-		executeCommands(argv._);
+		executeCommands(argv._, argv);
 	} catch (err) {
 		handleErrors(err);
 	}

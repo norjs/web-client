@@ -1,4 +1,4 @@
-export angular from "angular";
+import angular from "angular";
 
 import {
   NrComponentController

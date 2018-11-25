@@ -11,6 +11,7 @@ import 'reset-css';
 import './app-styles.scss';
 
 import CONFIG from "./norjsConfig.js";
+const MODULES = CONFIG.modules ? CONFIG.modules : [];
 const STATES = CONFIG.states;
 const NAVS = CONFIG.navs;
 
@@ -18,16 +19,23 @@ import TRANSLATIONS from "./translations/index";
 
 import { PREFERRED_LANGUAGE } from "./env";
 
+let appModules = [
+  angularTranslate
+  , utilsModule
+  , servicesModule
+  , uiRouter
+  , commonModule
+  , viewsModule
+];
+
+_.forEach(MODULES, name => {
+  appModules.push(name);
+});
+
 export default angular.module(
-  "norjs.app"
-  , [
-    angularTranslate
-    , utilsModule
-    , servicesModule
-    , uiRouter
-    , commonModule
-    , viewsModule
-  ])
+    "norjs.app"
+    , appModules
+  )
   .constant("STATES", STATES)
   .constant("NAVS", NAVS)
   .config($logProvider => {

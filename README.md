@@ -32,3 +32,66 @@ norjs run ./app.json
 ```
 norjs build ./app.json
 ``` 
+
+### Hello World app
+
+You can extend your app logic with external ES6 enabled AngularJS modules.
+
+Your custom module `./myapp.js`:
+
+```js
+import { angular, NrViewController } from "norjs";
+
+let mainViewComponent = {
+  template: `
+<main>
+  <h3>Main page</h3>
+
+  <p>Hello World</p>
+</main>
+`,
+  controller: class MainViewController extends NrViewController {
+    constructor ($injector, $element, $attrs, $scope) {
+      super("myMainViewController", $injector, $element, $attrs, $scope);
+    }
+  }
+};
+
+export default angular.module(
+  "myapp"
+  , [])
+  .component('myMainView', mainViewComponent)
+  .name;
+```
+
+Configuration file `./app.json`:
+
+```json
+{
+  "name": "Hello World",
+  "modules": [
+    "myapp"
+  ],
+  "states": {
+    "main": {
+      "name": "main"
+    , "options": {
+        "url": "/main"
+      , "component": "myMainView"
+      }
+    }
+  }
+}
+```
+
+Then run it:
+
+```
+norjs run --import=./myapp.js ./app.json
+```
+
+Or build it:
+
+```
+norjs build --import=./myapp.js ./app.json
+```
