@@ -9,8 +9,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const NORJS_ROOT_DIR = __dirname;
-const NORJS_SOURCE_DIR = PATH.join(NORJS_ROOT_DIR, './js');
-const NORJS_PUBLIC_DIR = PATH.join(NORJS_ROOT_DIR, './public');
+const NORJS_SOURCE_DIR = PATH.join(NORJS_ROOT_DIR, './app');
+const NORJS_PUBLIC_DIR = PATH.join(NORJS_SOURCE_DIR, './public');
 const NORJS_API_URL = "http://localhost:3000";
 
 const NORJS_CONFIG_FILE = PATH.resolve(_.get(process, 'env.NORJS_CONFIG_FILE') || PATH.join(NORJS_SOURCE_DIR, './app.json'));

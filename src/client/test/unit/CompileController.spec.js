@@ -8,7 +8,7 @@ describe('CompileController', () => {
 
   beforeEach(defaultBeforeEach);
 
-  beforeEach(angular.mock.module('norjs.common.compile', $provide => {
+  beforeEach(angular.mock.module('norjs.app.common.compile', $provide => {
     $provide.value('$log', console);
 
     $provide.value(TEST_DEP1, TEST_DEP1_VALUE);
@@ -19,8 +19,8 @@ describe('CompileController', () => {
   let $rootScope;
 
   const testComponentSpy = componentSpyOn('testComponent');
-  beforeEach(angular.mock.module('test.mocks.testComponent', testComponentSpy));
-  beforeEach(angular.mock.module('norjs.services.utils.compile'));
+  beforeEach(angular.mock.module('norjs.test.mocks.testComponent', testComponentSpy));
+  beforeEach(angular.mock.module('norjs.app.utils.compile'));
 
   beforeEach(angular.mock.inject(( _$compile_, _$rootScope_ ) => {
     $compile = _$compile_;

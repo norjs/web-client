@@ -1,0 +1,12 @@
+{
+  "name": "Hello World",
+  "states": {
+    "main": {
+      "name": "main"
+    , "options": {
+        "url": "/main"
+      , "component": "myMainView"
+      }
+    }
+  }
+}

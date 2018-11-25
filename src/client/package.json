@@ -1,7 +1,7 @@
 {
-  "name": "angularjs-project-template",
-  "version": "1.0.0",
-  "description": "Ready to use -- commercially available -- MIT-licensed AngularJS / NodeJS project template.",
+  "name": "norjs-app",
+  "version": "1.0.1",
+  "description": "AngularJS app runtime environment.",
   "scripts": {
     "build": "rimraf dist && webpack --bail --progress --profile",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
