@@ -40,7 +40,7 @@ You can extend your app logic with external ES6 enabled AngularJS modules.
 Your custom module `./myapp.js`:
 
 ```js
-import { angular, NrViewController } from "norjs";
+import angular from "angular";
 
 let mainViewComponent = {
   template: `
@@ -50,10 +50,7 @@ let mainViewComponent = {
   <p>Hello World</p>
 </main>
 `,
-  controller: class MainViewController extends NrViewController {
-    constructor ($injector, $element, $attrs, $scope) {
-      super("myMainViewController", $injector, $element, $attrs, $scope);
-    }
+  controller: class MainViewController {
   }
 };
 
