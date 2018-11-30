@@ -1,13 +1,9 @@
 import { angular, NrViewController } from "norjs";
+import template from "./myapp.html";
+import "./myapp.scss";
 
 let mainViewComponent = {
-	template: `
-<main>
-  <h3>MyApp</h3>
-
-  <p>Hello World</p>
-</main>
-`,
+	template,
 	controller: class MainViewController extends NrViewController {
 		constructor ($injector, $element, $attrs, $scope) {
 			super("myMainViewController", $injector, $element, $attrs, $scope);
