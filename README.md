@@ -81,14 +81,23 @@ Configuration file `./app.json`:
 }
 ```
 
+Then file `./norjs.json` (or specify `--import=myapp.js --config=./app.json`):
+
+```json
+{
+  "import": "./myapp.js",
+  "config": ./app.json
+}
+```
+
 Then run it:
 
 ```
-norjs run --import=./myapp.js ./app.json
+norjs run
 ```
 
 Or build it:
 
 ```
-norjs build --import=./myapp.js ./app.json
+norjs build
 ```
