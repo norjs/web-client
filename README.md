@@ -86,7 +86,7 @@ Then file `./norjs.json` (or specify `--import=myapp.js --config=./app.json`):
 ```json
 {
   "import": "./myapp.js",
-  "config": ./app.json
+  "config": "./app.json"
 }
 ```
 
