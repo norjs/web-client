@@ -1,6 +1,6 @@
 {
   "name": "norjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The NorJS Runtime Environment",
   "main": "client/app/index.js",
   "directories": {
@@ -12,8 +12,10 @@
   "scripts": {
     "compile": "babel src/bin --out-dir dist --presets=es2015",
     "compile-watch": "babel --watch src --out-dir dist --presets=es2015",
+    "pretest": "npm run -s compile",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm run compile"
+    "prepare": "npm run -s compile",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
