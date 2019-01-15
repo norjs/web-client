@@ -2,7 +2,7 @@ import angular from 'angular';
 import compileUtilsModule from './compile/compileUtilsModule';
 
 export default angular.module(
-  "norjs.app.utils"
+  "norjs.app.services.utils"
   , [
     compileUtilsModule
 

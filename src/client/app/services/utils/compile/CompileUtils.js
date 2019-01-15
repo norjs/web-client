@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import NrService from "../../abstracts/NrService";
+import NrService from "../../../abstracts/NrService";
 
 /**
  * Encode expression from a parsed diverse variable (eg. from JSON) format in to a string.

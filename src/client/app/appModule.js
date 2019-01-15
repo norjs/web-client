@@ -3,7 +3,6 @@ import _ from 'lodash';
 import uiRouter from 'angular-ui-router';
 import angularTranslate from 'angular-translate';
 import servicesModule from './services/servicesModule';
-import utilsModule from './utils/utilsModule';
 import commonModule from './common/commonModule';
 import viewsModule from './views/viewsModule';
 import uiRouterConfigurator from './config/uiRouterConfigurator';
@@ -21,7 +20,6 @@ import { PREFERRED_LANGUAGE } from "./env";
 
 let appModules = [
   angularTranslate
-  , utilsModule
   , servicesModule
   , uiRouter
   , commonModule

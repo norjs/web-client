@@ -1,0 +1,65 @@
+$table-border-color: #c0c0c0;
+
+$table-header-background-color: #2871b6;
+$table-header-text-color: #ffffff;
+
+$table-row-border-color: #e0e0e0;
+$table-row-background-color: #fbfbfb;
+$table-row-background-color-even: #ffffff;
+
+$table-column-border-color: #f0f0f0;
+
+nr-table {
+
+  & > .table {
+    border: 1px solid $table-border-color;
+
+    & > .row {
+      display: flex;
+      flex: 0 1 auto;
+
+      & > .column > .content {
+        margin: 0.5em 0.75em;
+        white-space: nowrap;
+      }
+
+      & > .column:last-child > .content {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+    }
+
+    & > header {
+      border-bottom: 1px solid $table-border-color;
+      background-color: $table-header-background-color;
+      color: $table-header-text-color;
+
+      & > .column:not(:last-child) {
+        border-right: 1px solid $table-column-border-color;
+        text-align: center;
+      }
+    }
+
+    & > div.row {
+      border-bottom: 1px solid $table-row-border-color;
+      background-color: $table-row-background-color;
+
+      & > .column:not(:last-child) {
+        border-right: 1px solid $table-column-border-color;
+      }
+
+    }
+
+    & > div.row:nth-child(even) {
+      background-color: $table-row-background-color-even;
+    }
+
+  }
+
+  & > .summary {
+    margin-top: 0.5em;
+    text-align: center;
+  }
+
+}

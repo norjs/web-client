@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { stringifyExpression } from '../utils/compile/CompileUtils';
+import { stringifyExpression } from '../services/utils/compile/CompileUtils';
 
 /**
  * Builds a function which configures application states for angular-ui-router
