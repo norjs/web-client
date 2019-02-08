@@ -125,7 +125,9 @@ module.exports = function makeWebpackConfig() {
         // Transpile .js files using babel-loader
         // Compiles ES6 and ES7 into ES5 code
         test: /node_modules\/@novnc\/.*\.js$/,
-        loader: 'babel-loader'
+        loader: [
+          'babel-loader'
+        ]
       },
       {
         // JS LOADER
@@ -133,7 +135,19 @@ module.exports = function makeWebpackConfig() {
         // Transpile .js files using babel-loader
         // Compiles ES6 and ES7 into ES5 code
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: [
+          {
+            loader: 'ng-annotate-loader',
+            options: {
+              ngAnnotate: "ng-annotate-patched",
+              es6: true,
+              explicitOnly: false
+            }
+          },
+          {
+            loader: 'babel-loader'
+          }
+        ],
         exclude: /node_modules/
       },
       {
