@@ -85,6 +85,11 @@ const COMMANDS = {
 	RUN: 'run'
 
 	/**
+	 * Command for running the app in a development mode (eg. `"run-prod"`)
+	 */
+	, RUN_PROD: 'run-prod'
+
+	/**
 	 * Command for building for production (eg. `"build"`)
 	 */
 	, BUILD: 'build'
@@ -275,8 +280,23 @@ function parseArguments (args, argv) {
  * @param argv
  */
 function commandRun (args, argv) {
-	const {NORJS_CONFIG_FILE, NORJS_EXTERNAL_FILES} = parseArguments(args, argv)
+	const {NORJS_CONFIG_FILE, NORJS_EXTERNAL_FILES} = parseArguments(args, argv);
 	return exec('npm', ['start'], {
+		NORJS_CONFIG_FILE
+		, NORJS_EXTERNAL_FILES
+	}, {
+		detached: true
+	}).catch(handleErrors);
+}
+
+/**
+ *
+ * @param args
+ * @param argv
+ */
+function commandRunProd (args, argv) {
+	const {NORJS_CONFIG_FILE, NORJS_EXTERNAL_FILES} = parseArguments(args, argv);
+	return exec('npm', ['run', 'server-prod'], {
 		NORJS_CONFIG_FILE
 		, NORJS_EXTERNAL_FILES
 	}, {
@@ -413,6 +433,10 @@ function executeCommands (commands, argv) {
 
 		case COMMANDS.RUN:
 			commandRun(commands.slice(index+1), argv);
+			return EXIT_FOREACH;
+
+		case COMMANDS.RUN_PROD:
+			commandRunProd(commands.slice(index+1), argv);
 			return EXIT_FOREACH;
 
 		case COMMANDS.BUILD:

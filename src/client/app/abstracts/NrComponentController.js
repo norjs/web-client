@@ -18,6 +18,7 @@ export default class NrComponentController extends NrController {
    * @ngInject
    */
   constructor (name, $injector, $element, $attrs, $scope) {
+    'ngInject';
 
     super(name, $injector);
 

@@ -12,6 +12,7 @@ class PageableList {
    * @param fullList {array}
    */
   constructor (fullList) {
+    'ngInject';
     this[PRIVATE.list] = fullList;
   }
 

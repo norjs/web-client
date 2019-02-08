@@ -1,12 +1,13 @@
 import template from './nav-view-template.html';
 import './nav-view-styles.scss';
-import NavViewController from './NavViewController';
+import NavViewController from './NavViewController.js';
 
 /**
  *
  * @type {{template, controller: NavViewController}}
+ * @ngInject
  */
-let navViewComponent = {
+const navViewComponent = {
   template,
   controller: NavViewController
 };

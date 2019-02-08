@@ -14,10 +14,11 @@ export default class NrService {
    *
    * @param name {string} Name of concrete class
    * @param $injector {$injector}
-   * @ngInject
    * @protected
+   * @ngInject
    */
   constructor (name, $injector) {
+    'ngInject';
 
     /**
      * @member {string}

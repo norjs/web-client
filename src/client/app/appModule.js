@@ -18,7 +18,7 @@ import TRANSLATIONS from "./translations/index";
 
 import { PREFERRED_LANGUAGE } from "./env";
 
-let appModules = [
+const appModules = [
   angularTranslate
   , servicesModule
   , uiRouter
@@ -30,20 +30,36 @@ _.forEach(MODULES, name => {
   appModules.push(name);
 });
 
+/**
+ *
+ * @param $logProvider
+ * @ngInject
+ */
+function enableDebug ($logProvider) {
+  'ngInject';
+  $logProvider.debugEnabled(true);
+}
+
+/**
+ *
+ * @param $translateProvider
+ * @ngInject
+ */
+function setupTranslation ($translateProvider) {
+  'ngInject';
+  _.forEach(_.keys(TRANSLATIONS), key => {
+    $translateProvider.translations(key, TRANSLATIONS[key]);
+  });
+  $translateProvider.preferredLanguage(PREFERRED_LANGUAGE);
+}
+
 export default angular.module(
     "norjs.app"
     , appModules
   )
   .constant("STATES", STATES)
   .constant("NAVS", NAVS)
-  .config($logProvider => {
-    $logProvider.debugEnabled(true);
-  })
-  .config($translateProvider => {
-    _.forEach(_.keys(TRANSLATIONS), key => {
-      $translateProvider.translations(key, TRANSLATIONS[key]);
-    });
-    $translateProvider.preferredLanguage(PREFERRED_LANGUAGE);
-  })
+  .config(enableDebug)
+  .config(setupTranslation)
   .config(uiRouterConfigurator(STATES))
   .name;

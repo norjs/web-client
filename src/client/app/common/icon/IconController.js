@@ -21,6 +21,8 @@ class IconController extends NrComponentController {
    * @ngInject
    */
   constructor ($injector, $element, $attrs, $scope) {
+    'ngInject';
+
     super("nrIconController", $injector, $element, $attrs, $scope);
   }
 

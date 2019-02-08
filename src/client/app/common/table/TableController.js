@@ -63,14 +63,15 @@ class TableController extends AbstractComponentController {
   /**
    *
    * @param $injector {$injector}
-   * @ngInject
    * @param $element {$element}
    * @param $attrs {$attrs}
    * @param $scope {$scope}
    * @param $q {$q}
    * @param tableService {TableService}
+   * @ngInject
    */
   constructor ($injector, $element, $attrs, $scope, $q, tableService) {
+    'ngInject';
     super("TableController", $injector, $element, $attrs, $scope);
 
     /**

@@ -7,6 +7,7 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 const NORJS_ROOT_DIR = PATH.resolve(__dirname);
 const NORJS_SOURCE_DIR = PATH.join(NORJS_ROOT_DIR, './app');
@@ -23,7 +24,7 @@ const NORJS_EXTERNAL_FILES = PATH.resolve(_.get(process, 'env.NORJS_EXTERNAL_FIL
  */
 var ENV = process.env.npm_lifecycle_event;
 var isTest = ENV === 'test' || ENV === 'test-watch';
-var isProd = ENV === 'build';
+var isProd = ENV === 'build' || ENV === 'prod' || ENV === 'server-prod';
 
 module.exports = function makeWebpackConfig() {
   /**
@@ -214,6 +215,12 @@ module.exports = function makeWebpackConfig() {
    * List: http://webpack.github.io/docs/list-of-plugins.html
    */
   config.plugins = [
+
+    new ngAnnotatePlugin({
+      add: true,
+      // other ng-annotate options here
+    }),
+
     new webpack.LoaderOptionsPlugin({
       test: /\.scss$/i,
       options: {

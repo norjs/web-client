@@ -5,8 +5,9 @@ import MainViewController from './MainViewController';
 /**
  *
  * @type {{template, restrict: string, controller: MainViewController, controllerAs: string}}
+ * @ngInject
  */
-let mainViewComponent = {
+const mainViewComponent = {
   template,
   controller: MainViewController
 };

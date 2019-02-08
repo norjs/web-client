@@ -10,10 +10,10 @@ class MainViewController extends NrViewController {
   /**
    *
    * @param $injector {$injector}
-   * @ngInject
    * @param $element {$element}
    * @param $attrs {$attrs}
    * @param $scope {$scope}
+   * @ngInject
    */
   constructor (
     $injector
@@ -21,6 +21,7 @@ class MainViewController extends NrViewController {
     , $attrs
     , $scope
   ) {
+    'ngInject';
     super("nrMainViewController", $injector, $element, $attrs, $scope);
   }
 

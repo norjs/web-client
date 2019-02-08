@@ -16,6 +16,8 @@ class NavController extends NrComponentController {
    * @ngInject
    */
   constructor ($injector, $element, $attrs, $scope) {
+    'ngInject';
+
     super("nrNavController", $injector, $element, $attrs, $scope);
 
     /**

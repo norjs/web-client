@@ -7,7 +7,14 @@ const PRIVATE = {
 
 export default class NrLoggingContext {
 
+  /**
+   *
+   * @param $log
+   * @param name
+   * @ngInject
+   */
   constructor ($log, name) {
+    'ngInject';
     this[PRIVATE.name] = name;
     this[PRIVATE.log] = $log;
   }

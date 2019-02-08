@@ -10,6 +10,7 @@ const PRIVATE = {
 export class TableRow {
 
   constructor (item) {
+    'ngInject';
     this[PRIVATE.item] = item;
   }
 

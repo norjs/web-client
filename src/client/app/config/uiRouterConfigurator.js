@@ -8,8 +8,10 @@ import { stringifyExpression } from '../services/utils/compile/CompileUtils';
  *
  * @param states {object} States configuration object
  * @return {uiRouterConfigurator}
+ * @ngInject
  */
 function uiRouterConfiguratorFactory (states) {
+  'ngInject';
 
   /**
    *
@@ -66,16 +68,17 @@ function uiRouterConfiguratorFactory (states) {
    * Configures application states for angular-ui-router from static state
    * configuration object which was provided to the factory function.
    *
-   * @ngInject
    * @param $stateProvider {$stateProvider}
    * @param $urlRouterProvider {$urlRouterProvider}
    * @param $locationProvider {$locationProvider}
+   * @ngInject
    */
   function uiRouterConfigurator (
     $stateProvider
     , $urlRouterProvider
     , $locationProvider
   ) {
+    'ngInject';
 
     const defaultUrl = _.get(states, 'main.options.url');
 

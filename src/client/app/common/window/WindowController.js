@@ -71,6 +71,7 @@ class WindowController extends NrComponentController {
    * @ngInject
    */
   constructor ($injector, $element, $attrs, $scope) {
+    'ngInject';
     super("nrWindowController", $injector, $element, $attrs, $scope);
 
     /**

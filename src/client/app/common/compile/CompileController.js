@@ -130,12 +130,14 @@ class CompileController extends NrComponentController {
    * @param $attrs {$attrs}
    * @param $scope {$scope}
    * @param $compile {$compile}
-   * @ngInject
    * @param $parse
    * @param $transclude
    * @param nrCompileUtils
+   * @ngInject
    */
   constructor ($injector, $element, $attrs, $scope, $compile, $parse, $transclude, nrCompileUtils) {
+    'ngInject';
+
     super("nrCompileController", $injector, $element, $attrs, $scope);
 
     /**

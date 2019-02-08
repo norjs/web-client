@@ -38,6 +38,8 @@ class CompileUtils extends NrService {
    * @ngInject
    */
   constructor ($injector) {
+    'ngInject';
+
     super("nrCompileUtils", $injector);
   }
 

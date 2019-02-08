@@ -1,35 +1,35 @@
 
-import NrViewController from '../../abstracts/NrViewController';
 
 /**
  *
  * @ngInject
  */
-class NavViewController extends NrViewController {
+class NavViewController {
 
   /**
    *
-   * @param $injector {$injector}
-   * @param $element {$element}
-   * @param $attrs {$attrs}
-   * @param $scope {$scope}
+   * @param NAVS {*}
    * @ngInject
    */
-  constructor ($injector, $element, $attrs, $scope, NAVS) {
-    super("NrNavViewController", $injector, $element, $attrs, $scope);
+  constructor (NAVS) {
+    'ngInject';
 
-    this.nav = _.cloneDeep(NAVS && NAVS.top ? NAVS.top : { collection: [] });
+    this._nav = _.cloneDeep(NAVS && NAVS.top ? NAVS.top : { collection: [] });
 
-    if (!this.nav.collection) {
-      this.nav.collection = [];
+    if (!this._nav.collection) {
+      this._nav.collection = [];
     }
 
-    this.nav.getId = item => item.id;
-    this.nav.getHref = item => item.href || item.id;
-    this.nav.getIcon = item => item.icon;
-    this.nav.getLabel = item => item.label;
-    this.nav.isVisible = item => item.visible === undefined ? true : item.visible;
+    this._nav.getId = item => item.id;
+    this._nav.getHref = item => item.href || item.id;
+    this._nav.getIcon = item => item.icon;
+    this._nav.getLabel = item => item.label;
+    this._nav.isVisible = item => item.visible === undefined ? true : item.visible;
 
+  }
+
+  get nav () {
+    return this._nav;
   }
 
 }

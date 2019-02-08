@@ -11,6 +11,7 @@ class TableService extends NrService {
    * @ngInject
    */
   constructor ($injector) {
+    'ngInject';
     super("TableService", $injector);
   }
 

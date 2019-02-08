@@ -25,6 +25,8 @@ class WindowService extends NrService {
    * @ngInject
    */
   constructor ($injector, $document, $rootScope) {
+    'ngInject';
+
     super("WindowController", $injector);
 
     this[PRIVATE.$compile] = $injector.get('$compile');
