@@ -30,6 +30,7 @@
     "webpack-cli": "^3.1.2"
   },
   "devDependencies": {
+    "@norjs/models": "^1.4.0",
     "@novnc/novnc": "^1.0.0",
     "ajv": "^6.4.0",
     "angular-mocks": "^1.7.5",
