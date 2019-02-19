@@ -50,7 +50,7 @@ function setupTranslation ($translateProvider) {
   _.forEach(_.keys(TRANSLATIONS), key => {
     $translateProvider.translations(key, TRANSLATIONS[key]);
   });
-  $translateProvider.preferredLanguage(PREFERRED_LANGUAGE);
+  //$translateProvider.preferredLanguage(PREFERRED_LANGUAGE);
 }
 
 export default angular.module(
