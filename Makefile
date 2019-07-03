@@ -1,8 +1,7 @@
-all: build
-build: compile
 
-compile:
-	npm run -s compile
+all: 
 
-install:
-	npm install -g .
+
+clean: 
+	rm -rf node_modules/ dist/
+	
