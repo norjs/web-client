@@ -82,13 +82,16 @@ function uiRouterConfiguratorFactory (states) {
 
     const defaultUrl = _.get(states, 'main.options.url');
 
-    // For any unmatched url, redirect to /main
-    if (defaultUrl) $urlRouterProvider.otherwise(defaultUrl);
-
     // Now set up the states
     _.forEach(_.keys(states), route => {
-      $stateProvider.state(states[route].name, prepareStateOptions(states[route].options, states[route], route));
+      const name = states[route].name;
+      const options = prepareStateOptions(states[route].options, states[route], route);
+      //console.log('WOOT: ', name, options);
+      $stateProvider.state(states[route].name, options);
     });
+
+    // For any unmatched url, redirect to /main
+    if (defaultUrl) $urlRouterProvider.otherwise(defaultUrl);
 
     // use the HTML5 History API
     $locationProvider.html5Mode(true);
