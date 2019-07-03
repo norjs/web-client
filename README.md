@@ -12,7 +12,7 @@ You may follow the progress in [the feature issue #1](https://github.com/norjs/n
 ### Install norjs command line interface
 
 ```
-npm install -g norjs
+npm install -g @norjs/web-client
 ```
 
 ### Install NorJS Runtime Environment
