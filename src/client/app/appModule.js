@@ -6,6 +6,7 @@ import servicesModule from './services/servicesModule';
 import commonModule from './common/commonModule';
 import viewsModule from './views/viewsModule';
 import uiRouterConfigurator from './config/uiRouterConfigurator';
+import uiComponents from '@norjs/ui';
 import 'reset-css';
 import './app-styles.scss';
 
@@ -22,6 +23,7 @@ const appModules = [
   angularTranslate
   , servicesModule
   , uiRouter
+  , uiComponents
   , commonModule
   , viewsModule
 ];
