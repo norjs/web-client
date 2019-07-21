@@ -1,7 +1,7 @@
 {
-  "name": "norjs-app",
-  "version": "1.0.1",
-  "description": "AngularJS app runtime environment.",
+  "name": "@norjs/frontend-sdk",
+  "version": "1.0.10",
+  "description": "NorJS Frontend Development Environment",
   "scripts": {
     "build": "rimraf dist && webpack --bail --progress --profile",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
@@ -25,7 +25,7 @@
     "angular": "^1.7.5",
     "angular-translate": "^2.18.1",
     "angular-ui-router": "^1.0.20",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "reset-css": "^4.0.1",
     "webpack-cli": "^3.1.2"
   },
@@ -36,6 +36,7 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
     "@norjs/models": "^1.4.0",
+    "@norjs/ui": "^1.0.10",
     "@novnc/novnc": "^1.0.0",
     "ajv": "^6.4.0",
     "angular-mocks": "^1.7.5",
