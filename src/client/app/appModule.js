@@ -3,7 +3,6 @@ import _ from 'lodash';
 import uiRouter from 'angular-ui-router';
 import angularTranslate from 'angular-translate';
 import servicesModule from './services/servicesModule';
-import commonModule from './common/commonModule';
 import viewsModule from './views/viewsModule';
 import uiRouterConfigurator from './config/uiRouterConfigurator';
 import uiComponents from '@norjs/ui';
@@ -24,7 +23,6 @@ const appModules = [
   , servicesModule
   , uiRouter
   , uiComponents
-  , commonModule
   , viewsModule
 ];
 
