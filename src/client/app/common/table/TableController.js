@@ -6,6 +6,18 @@ import pageableInterface from "../../utils/pageableInterface";
 import PageableList from "../../utils/PageableList";
 
 /**
+ * @typedef {Object} TableColumnObject
+ * @property {number} id -
+ * @property {string} key -
+ * @property {string} label -
+ */
+
+/**
+ * @typedef {Object} TableOptionsObject
+ * @property {Array.<TableColumnObject>} columns -
+ */
+
+/**
  * Private member property symbols for TableController.
  *
  * @type {{$q: Symbol, tableService: Symbol, content: Symbol, options: Symbol, contentAPI: Symbol, fetchPage: Symbol,
