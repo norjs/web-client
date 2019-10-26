@@ -1,6 +1,6 @@
 {
   "name": "@norjs/frontend-sdk",
-  "version": "1.0.10",
+  "version": "1.0.15",
   "description": "NorJS Frontend Development Environment",
   "scripts": {
     "build": "rimraf dist && webpack --bail --progress --profile",
@@ -36,7 +36,7 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
     "@norjs/models": "^1.4.0",
-    "@norjs/ui": "^1.0.10",
+    "@norjs/ui": "^1.0.15",
     "@novnc/novnc": "^1.0.0",
     "ajv": "^6.4.0",
     "angular-mocks": "^1.7.5",
