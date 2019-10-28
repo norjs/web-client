@@ -3,9 +3,9 @@
   "version": "1.0.16",
   "description": "NorJS Frontend Development Environment",
   "scripts": {
-    "build": "rimraf dist && webpack --bail --progress --profile",
-    "server": "webpack-dev-server --history-api-fallback --inline --progress",
-    "server-prod": "webpack-dev-server --history-api-fallback --inline --progress",
+    "build": "rimraf dist && webpack --bail --profile",
+    "server": "webpack-dev-server --history-api-fallback --inline",
+    "server-prod": "webpack-dev-server --history-api-fallback --inline",
     "test": "karma start",
     "test-watch": "karma start --auto-watch --no-single-run",
     "start": "npm run server",
