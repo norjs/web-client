@@ -42,7 +42,7 @@ Your custom module `./myapp.js`:
 ```js
 import angular from "angular";
 
-let mainViewComponent = {
+let waMainViewComponent = {
   template: `
 <main>
   <h3>Main page</h3>
@@ -50,14 +50,14 @@ let mainViewComponent = {
   <p>Hello World</p>
 </main>
 `,
-  controller: class MainViewController {
+  controller: class WaMainViewController {
   }
 };
 
 export default angular.module(
   "myapp"
   , [])
-  .component('myMainView', mainViewComponent)
+  .component('myMainView', waMainViewComponent)
   .name;
 ```
 

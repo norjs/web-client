@@ -22,6 +22,7 @@ function uiRouterConfiguratorFactory (states) {
    * @return {StateConfigOptions}
    */
   function prepareStateOptions (config, state, route, nrCompileUtils) {
+
     config = _.cloneDeep(config);
 
     if (config && config.resolve) {
@@ -78,7 +79,6 @@ function uiRouterConfiguratorFactory (states) {
     , $urlRouterProvider
     , $locationProvider
   ) {
-    'ngInject';
 
     const defaultUrl = _.get(states, 'main.options.url');
 
