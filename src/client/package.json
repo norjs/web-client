@@ -8,8 +8,8 @@
     "server-prod": "webpack-dev-server --history-api-fallback --inline",
     "test": "karma start",
     "test-watch": "karma start --auto-watch --no-single-run",
-    "start": "npm run server",
-    "prod": "npm run server-prod"
+    "start": "npm -s run server",
+    "prod": "npm -s run server-prod"
   },
   "repository": {
     "type": "git",

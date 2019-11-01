@@ -59,16 +59,22 @@ function exec (name, args, env, {detached = false, disconnect = true} = {}) {
 	if (child.stdin) child.stdin.end();
 
 	function killChild (reason) {
+
 		if (childKilled || !childRunning) return;
 
 		console.error(`Received "${reason}" - Killing child #${child.pid}`);
 		child.kill();
 		childKilled = true;
+
 	}
 
 	process.on("exit", () => killChild("exit"));
-	process.on("SIGHUP", () => killChild("SIGHUP"));
+	process.on("SIGTERM", () => killChild("SIGTERM"));
 	process.on("SIGINT", () => killChild("SIGINT"));
+	process.on("SIGUSR1", () => killChild("SIGUSR1"));
+	process.on("SIGUSR2", () => killChild("SIGUSR2"));
+	process.on("SIGHUP", () => killChild("SIGHUP"));
+	process.on('uncaughtException', () => killChild("uncaughtException"));
 
 	return promise;
 }
