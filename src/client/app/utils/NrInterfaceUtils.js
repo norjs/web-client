@@ -3,7 +3,7 @@ import _ from "lodash";
 /**
  *
  */
-class InterfaceUtils {
+class NrInterfaceUtils {
 
   /**
    * Returns true if object `obj` implements interface in `iface`.
@@ -40,4 +40,4 @@ class InterfaceUtils {
 
 }
 
-export default InterfaceUtils;
+export default NrInterfaceUtils;

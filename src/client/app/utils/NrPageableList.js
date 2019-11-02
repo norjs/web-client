@@ -1,11 +1,11 @@
-import pageableInterface from "./pageableInterface";
-import PageUtils from "./PageUtils";
+import nrPageableInterface from "./nrPageableInterface";
+import NrPageUtils from "./NrPageUtils";
 
 const PRIVATE = {
   list: Symbol('_list')
 };
 
-class PageableList {
+class NrPageableList {
 
   /**
    *
@@ -22,19 +22,19 @@ class PageableList {
    * @param opts {{size:number, page:number}}
    * @returns {{content: Array, page: number, size: number, totalItems: number}}
    */
-  [pageableInterface.getPage] (opts) {
-    return PageUtils.getPage(this[PRIVATE.list], opts);
+  [nrPageableInterface.getPage] (opts) {
+    return NrPageUtils.getPage(this[PRIVATE.list], opts);
   }
 
   /**
    *
    * @param fullList {array}
-   * @returns {PageableList}
+   * @returns {NrPageableList}
    */
   static create (fullList) {
-    return new PageableList(fullList);
+    return new NrPageableList(fullList);
   }
 
 }
 
-export default PageableList;
+export default NrPageableList;

@@ -4,7 +4,7 @@
  *
  * @ngInject
  */
-class NavViewController {
+class NrNavViewController {
 
   /**
    *
@@ -34,4 +34,4 @@ class NavViewController {
 
 }
 
-export default NavViewController;
+export default NrNavViewController;

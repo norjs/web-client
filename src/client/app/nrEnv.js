@@ -7,7 +7,7 @@ const ENV = process && process.env || {};
 /**
  * The default language setting for angular-translate.
  *
- * The keyword from `./src/translations/{KEY}.json`.
+ * The keyword from `./src/nrTranslations/{KEY}.json`.
  *
  * @type {string}
  */

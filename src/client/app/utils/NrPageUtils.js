@@ -1,9 +1,9 @@
-import PageableList from "./PageableList";
+import NrPageableList from "./NrPageableList";
 
 /**
  * Helper functions for paging
  */
-class PageUtils {
+class NrPageUtils {
 
   /**
    * Returns a page from the model list.
@@ -34,4 +34,4 @@ class PageUtils {
 
 }
 
-export default PageUtils;
+export default NrPageUtils;

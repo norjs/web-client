@@ -5,7 +5,7 @@ import NrViewController from "../../abstracts/NrViewController";
  *
  * @ngInject
  */
-class MainViewController extends NrViewController {
+class NrMainViewController extends NrViewController {
 
   /**
    *
@@ -21,10 +21,9 @@ class MainViewController extends NrViewController {
     , $attrs
     , $scope
   ) {
-    'ngInject';
     super("nrMainViewController", $injector, $element, $attrs, $scope);
   }
 
 }
 
-export default MainViewController;
+export default NrMainViewController;
