@@ -2,7 +2,6 @@ import angular from 'angular';
 import _ from 'lodash';
 import uiRouter from 'angular-ui-router';
 import angularTranslate from 'angular-translate';
-import servicesModule from './services/servicesModule';
 import viewsModule from './views/viewsModule';
 import uiRouterConfigurator from './config/uiRouterConfigurator';
 import uiComponents from '@norjs/ui';
@@ -20,7 +19,6 @@ import { PREFERRED_LANGUAGE } from "./env";
 
 const appModules = [
   angularTranslate
-  , servicesModule
   , uiRouter
   , uiComponents
   , viewsModule

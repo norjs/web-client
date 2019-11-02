@@ -1,6 +1,5 @@
 import _ from 'lodash';
-
-import { stringifyExpression } from '../services/utils/compile/CompileUtils';
+import NrCompileUtils from '@norjs/ui/utils/NrCompileUtils';
 
 /**
  * Builds a function which configures application states for angular-ui-router
@@ -18,10 +17,9 @@ function uiRouterConfiguratorFactory (states) {
    * @param config {StateConfigOptions}
    * @param state {StateConfig}
    * @param route {string}
-   * @param nrCompileUtils {nrCompileUtils}
    * @return {StateConfigOptions}
    */
-  function prepareStateOptions (config, state, route, nrCompileUtils) {
+  function prepareStateOptions (config, state, route) {
 
     config = _.cloneDeep(config);
 
@@ -43,7 +41,7 @@ function uiRouterConfiguratorFactory (states) {
             if (!compiledExpression) {
               // FIXME: Values in the expression could be handled through context also, and
               //        their references would stay same.
-              compiledExpression = $parse(stringifyExpression(expression));
+              compiledExpression = $parse( NrCompileUtils.stringifyExpression(expression) );
             }
             const context = {};
             _.forEach(argKeys, (key, index) => {
