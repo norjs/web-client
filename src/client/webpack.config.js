@@ -1,13 +1,12 @@
-'use strict';
 
 // Modules
-var _ = require('lodash');
-var PATH = require('path');
-var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+const _ = require('lodash');
+const PATH = require('path');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 const NORJS_ROOT_DIR = PATH.resolve(__dirname);
 const NORJS_SOURCE_DIR = PATH.join(NORJS_ROOT_DIR, './app');
@@ -22,9 +21,9 @@ const NORJS_EXTERNAL_FILES = PATH.resolve(_.get(process, 'env.NORJS_EXTERNAL_FIL
  * Env
  * Get npm lifecycle event to identify the environment
  */
-var ENV = process.env.npm_lifecycle_event;
-var isTest = ENV === 'test' || ENV === 'test-watch';
-var isProd = ENV === 'build' || ENV === 'prod' || ENV === 'server-prod';
+const ENV = process.env.npm_lifecycle_event;
+const isTest = ENV === 'test' || ENV === 'test-watch';
+const isProd = ENV === 'build' || ENV === 'prod' || ENV === 'server-prod';
 
 module.exports = function makeWebpackConfig() {
   /**
@@ -32,7 +31,7 @@ module.exports = function makeWebpackConfig() {
    * Reference: http://webpack.github.io/docs/configuration.html
    * This is the object where all configuration gets set
    */
-  var config = {};
+  const config = {};
 
   config.mode = isProd ? 'production' : 'development';
 
@@ -50,7 +49,7 @@ module.exports = function makeWebpackConfig() {
     });
   }
 
-  appEntries.push(PATH.join(NORJS_SOURCE_DIR, './appModule.js'));
+  appEntries.push(PATH.join(NORJS_SOURCE_DIR, './nrAppModule.js'));
 
   /**
    * Entry
@@ -159,40 +158,29 @@ module.exports = function makeWebpackConfig() {
         ]
       },
       {
-      // CSS LOADER
-      // Reference: https://github.com/webpack/css-loader
-      // Allow loading css through js
-      //
-      // Reference: https://github.com/postcss/postcss-loader
-      // Postprocess your css with PostCSS plugins
-      test: /\.scss$|\.css$/,
-      // Reference: https://github.com/webpack/extract-text-webpack-plugin
-      // Extract css files in production builds
-      //
-      
-      // ASSET LOADER
-      // Reference: https://github.com/webpack/file-loader
-      // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output
-      // Rename the file using the asset hash
-      // Pass along the updated reference to your code
-      // You can add here any file extension you want to get copied to your output
-      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-      loader: 'file-loader'
-    }, {
-      // HTML LOADER
-      // Reference: https://github.com/webpack/raw-loader
-      // Allow loading html through js
-      test: /\.html$/,
-      loader: 'raw-loader'
-    },
-    // font-awesome
-    {
-      test: /font-awesome\.config\.js/,
-      use: [
-        { loader: 'style-loader' },
-        { loader: 'font-awesome-loader' }
-      ]
-    }
+        // ASSET LOADER
+        // Reference: https://github.com/webpack/file-loader
+        // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output
+        // Rename the file using the asset hash
+        // Pass along the updated reference to your code
+        // You can add here any file extension you want to get copied to your output
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+        loader: 'file-loader'
+      }, {
+        // HTML LOADER
+        // Reference: https://github.com/webpack/raw-loader
+        // Allow loading html through js
+        test: /\.html$/,
+        loader: 'raw-loader'
+      },
+      // font-awesome
+      {
+        test: /font-awesome\.config\.js/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'font-awesome-loader' }
+        ]
+      }
     ]
   };
 
@@ -223,6 +211,7 @@ module.exports = function makeWebpackConfig() {
    // NOTE: This is now handled in the `postcss.config.js`
    //       webpack2 has some issues, making the config file necessary
 
+  // noinspection JSPotentiallyInvalidConstructorUsage
   /**
    * Plugins
    * Reference: http://webpack.github.io/docs/configuration.html#plugins

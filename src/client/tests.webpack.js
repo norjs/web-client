@@ -4,7 +4,7 @@
 import 'babel-polyfill';
 import 'angular';
 import 'angular-mocks/angular-mocks';
-import './app/appModule.js';
+import './app/nrAppModule.js';
 import './test/mocks/testMocksModule';
 
 const context = require.context('./test', true, /\.js$/);
