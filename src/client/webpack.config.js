@@ -10,7 +10,7 @@ const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 const NORJS_ROOT_DIR = PATH.resolve(__dirname);
 const NORJS_SOURCE_DIR = PATH.join(NORJS_ROOT_DIR, './app');
-const NORJS_PUBLIC_DIR = PATH.join(NORJS_SOURCE_DIR, './public');
+const NORJS_PUBLIC_DIR = process.env.NORJS_PUBLIC_DIR ? process.env.NORJS_PUBLIC_DIR : PATH.join(NORJS_SOURCE_DIR, './public');
 const NORJS_DIST_DIR = PATH.join(NORJS_ROOT_DIR, './dist');
 const NORJS_API_URL = "http://localhost:3000";
 
