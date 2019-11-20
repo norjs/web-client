@@ -20,14 +20,14 @@
   },
   "homepage": "https://github.com/norjs/angularjs-project-template#readme",
   "dependencies": {
-    "angular": "^1.7.5",
+    "angular": "^1.7.9",
     "angular-translate": "^2.18.1",
-    "angular-ui-router": "^1.0.20",
+    "angular-ui-router": "^1.0.23",
     "lodash": "^4.17.15",
-    "reset-css": "^4.0.1",
-    "webpack-cli": "^3.1.2"
+    "reset-css": "^5.0.1"
   },
   "devDependencies": {
+    "webpack-cli": "^3.1.2",
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/polyfill": "^7.0.0",
@@ -38,7 +38,7 @@
     "@norjs/utils": "^1.0.17",
     "@novnc/novnc": "^1.0.0",
     "ajv": "^6.4.0",
-    "angular-mocks": "^1.7.5",
+    "angular-mocks": "^1.7.9",
     "autoprefixer": "^8.4.1",
     "babel-loader": "^8.0.5",
     "babel-polyfill": "^6.26.0",
