@@ -5,11 +5,12 @@
       {
         "targets": {
           "chrome": "58",
-	  "ie": "11",
-	  "android": "6",
-	  "ios": "4"
+	        "ie": "11",
+	        "android": "6",
+	        "ios": "4"
         }
       }
-      ]
-  ]
+    ]
+  ],
+  "plugins": ["angularjs-annotate"]
 }
