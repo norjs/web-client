@@ -8,6 +8,10 @@ class NrMainViewController {
     return "nrMainViewController";
   }
 
+  static get $inject () {
+    return [];
+  }
+
   /**
    *
    * @ngInject

@@ -33,8 +33,8 @@ _.forEach(MODULES, name => {
 /**
  *
  * @param $logProvider
- * @ngInject
  * @fixme Only enable when running in development mode
+ * @ngInject
  */
 function enableDebug ($logProvider) {
 
