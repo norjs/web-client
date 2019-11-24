@@ -77,6 +77,7 @@ function uiRouterConfiguratorFactory (states) {
     , $urlRouterProvider
     , $locationProvider
   ) {
+    'ngInject';
 
     const defaultUrl = _.get(states, 'main.options.url');
 

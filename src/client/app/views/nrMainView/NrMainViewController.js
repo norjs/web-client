@@ -21,6 +21,7 @@ class NrMainViewController {
    * @ngInject
    */
   constructor () {
+    'ngInject';
   }
 
 }

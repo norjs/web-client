@@ -37,6 +37,7 @@ _.forEach(MODULES, name => {
  * @ngInject
  */
 function enableDebug ($logProvider) {
+  'ngInject';
 
   $logProvider.debugEnabled(true);
 
@@ -48,6 +49,8 @@ function enableDebug ($logProvider) {
  * @ngInject
  */
 function setupTranslation ($translateProvider) {
+  'ngInject';
+
   _.forEach(_.keys(TRANSLATIONS), key => {
     $translateProvider.translations(key, TRANSLATIONS[key]);
   });
