@@ -9,7 +9,11 @@ class NrMainViewController {
   }
 
   static get $inject () {
+    if (this._inject) return this._inject;
     return [];
+  }
+  static set $inject (value) {
+    this._inject = value;
   }
 
   /**
