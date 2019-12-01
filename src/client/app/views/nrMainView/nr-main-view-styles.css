@@ -1,3 +1,6 @@
 nr-main-view {
 
+  display: block;
+  box-sizing: border-box;
+
 }
