@@ -7,15 +7,27 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+const LicensePlugin = require('webpack-license-plugin');
 
 const NORJS_ROOT_DIR = PATH.resolve(__dirname);
 const NORJS_SOURCE_DIR = PATH.join(NORJS_ROOT_DIR, './app');
 const NORJS_PUBLIC_DIR = process.env.NORJS_PUBLIC_DIR ? process.env.NORJS_PUBLIC_DIR : PATH.join(NORJS_SOURCE_DIR, './public');
-const NORJS_DIST_DIR = PATH.join(NORJS_ROOT_DIR, './dist');
+const NORJS_DIST_DIR = process.env.NORJS_DIST_DIR ? process.env.NORJS_DIST_DIR : PATH.join(NORJS_ROOT_DIR, './dist');
 const NORJS_API_URL = "http://localhost:3000";
 
 const NORJS_CONFIG_FILE = PATH.resolve(_.get(process, 'env.NORJS_CONFIG_FILE') || PATH.join(NORJS_SOURCE_DIR, './app.json'));
 const NORJS_EXTERNAL_FILES = PATH.resolve(_.get(process, 'env.NORJS_EXTERNAL_FILES') || '');
+
+/**
+ *
+ * @type {string[]}
+ */
+const ACCEPTED_LICENSES_LIST = process.env.NORJS_ACCEPTED_LICENSE_LIST ? process.env.NORJS_ACCEPTED_LICENSE_LIST.split(' ') : [
+  'MIT',
+  'Apache-2.0',
+  '(OFL-1.1 AND MIT)',
+  'Unlicense'
+];
 
 /**
  * Env
@@ -24,6 +36,28 @@ const NORJS_EXTERNAL_FILES = PATH.resolve(_.get(process, 'env.NORJS_EXTERNAL_FIL
 const ENV = process.env.npm_lifecycle_event;
 const isTest = ENV === 'test' || ENV === 'test-watch';
 const isProd = ENV === 'build' || ENV === 'prod' || ENV === 'server-prod';
+
+const csvLicenseTransform = (packages) => {
+
+  const keys = ['name', 'version', 'license'];
+
+  return [
+    '"sep=,"',
+    keys.join(','),
+    ...packages.map(package => keys.map(key => `="${package[key]}"`).join(',')),
+  ].join('\n') + '\n';
+
+};
+
+const mdLicenseTransform = (packages) => {
+
+  return [
+    '| Name | Version | License |',
+    '|------|---------[---------|',
+    ...packages.map( package => `| [${package.name}](${package.repository}) |  ${package.version} | ${package.license} |` ),
+  ].join('\n') + '\n';
+
+};
 
 module.exports = function makeWebpackConfig() {
   /**
@@ -68,6 +102,7 @@ module.exports = function makeWebpackConfig() {
    * Karma will handle setting it up for you when it's a test build
    */
   config.output = isTest ? {} : {
+
     // Absolute output directory
     path: NORJS_DIST_DIR,
 
@@ -81,7 +116,8 @@ module.exports = function makeWebpackConfig() {
 
     // Filename for non-entry points
     // Only adds hash in build mode
-    chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js',
+    chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
+
   };
 
   config.resolve = {
@@ -218,6 +254,18 @@ module.exports = function makeWebpackConfig() {
    * List: http://webpack.github.io/docs/list-of-plugins.html
    */
   config.plugins = [
+
+    // there might be other plugins here
+    new LicensePlugin({
+      additionalFiles: {
+        'oss-licenses.csv': csvLicenseTransform,
+        'oss-licenses.md': mdLicenseTransform
+      },
+      excludedPackageTest: (packageName, version) => {
+        return packageName.startsWith('@norjs/')
+      },
+      unacceptableLicenseTest: (licenseIdentifier) => !ACCEPTED_LICENSES_LIST.includes(licenseIdentifier)
+    }),
 
     new ngAnnotatePlugin({
       add: true,
