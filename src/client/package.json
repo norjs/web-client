@@ -23,7 +23,7 @@
     "angular": "^1.7.9",
     "angular-translate": "^2.18.1",
     "angular-ui-router": "^1.0.23",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "reset-css": "^5.0.1"
   },
   "devDependencies": {
